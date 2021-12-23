@@ -1,4 +1,5 @@
 <?php
+
 namespace App;
 
 class ProductStructure
@@ -20,7 +21,12 @@ class ProductStructure
 
     public function make(): array
     {
-       //todo your code.
-        return [];
+        $newArrayProduct = array();
+        foreach (self::products as $value) {
+            $newValue = explode('-', $value);
+            if (!isset($newArrayProduct[$newValue[0]][$newValue[1]])) $newArrayProduct[$newValue[0]][$newValue[1]] = 0;
+            $newArrayProduct[$newValue[0]][$newValue[1]] += 1;
+        }
+        return $newArrayProduct;
     }
 }
